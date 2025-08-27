@@ -6,39 +6,22 @@
 /*   By: npetitpi <npetitpi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:35:10 by npetitpi          #+#    #+#             */
-/*   Updated: 2023/01/11 12:46:40 by npetitpi         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:09:17 by npetitpi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_check_rectangle(t_data *game)
-{
-	int	y;
-
-	y = 0;
-	while (game->map.map[y])
-	{
-		if (ft_strlen(game->map.map[y]) != (size_t)game->map.width)
-		{
-			write(1, "Error\nMap's not rectangle.\n", 27);
-			return (-1);
-		}
-		y++;
-	}
-	return (0);
-}
-
 int	ft_middle_walls(t_data *game, int y)
 {
 	if (game->map.map[y][0] != '1')
 	{
-		write(1, "Error\nMap's walls are not closed.\n", 34);
+		write(2, "Error\nMap's walls are not closed.\n", 34);
 		return (-1);
 	}
 	if (game->map.map[y][game->map.width - 1] != '1')
 	{
-		write(1, "Error\nMap's walls are not closed.\n", 34);
+		write(2, "Error\nMap's walls are not closed.\n", 34);
 		return (-1);
 	}
 	return (0);
@@ -50,7 +33,7 @@ int	ft_first_last_walls(t_data *game, int y, int x)
 	{
 		if (game->map.map[y][x] != '1')
 		{
-			write(1, "Error\nMap's walls are not closed.\n", 34);
+			write(2, "Error\nMap's walls are not closed.\n", 34);
 			return (-1);
 		}
 		x++;
@@ -91,7 +74,7 @@ int	ft_check_error(t_data *game, char *file)
 	ft_count_map_rows(game, file);
 	if (ft_set_map_layout(game, file) < 0)
 		return (-1);
-	if (ft_check_rectangle(game) < 0 || ft_check_walls(game) < 0)
+	if (ft_check_walls(game) < 0)
 	{
 		ft_free_map(game);
 		return (-1);
@@ -99,9 +82,10 @@ int	ft_check_error(t_data *game, char *file)
 	if (ft_init_positions(game, 0, 0) < 0)
 	{
 		ft_free_map(game);
-		//free(game->t_pos.x);
-		//free(game->t_pos.y);
 		return (-1);
 	}
+	if (!is_map_possible(game))
+		return (ft_free_map(game), write(2, "Error\nNo valid path. =(\n", 24),
+			-1);
 	return (0);
 }

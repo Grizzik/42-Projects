@@ -6,7 +6,7 @@
 /*   By: npetitpi <npetitpi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:35:04 by npetitpi          #+#    #+#             */
-/*   Updated: 2023/01/12 11:59:15 by npetitpi         ###   ########.fr       */
+/*   Updated: 2023/01/12 23:01:26 by npetitpi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ int	ft_check_requirements(t_data *game)
 {
 	if (game->map.player < 1)
 	{
-		write(1, "Error\nNot enough players!\n", 26);
+		write(2, "Error\nNot enough players!\n", 26);
 		return (-1);
 	}
 	if (game->map.exit < 1)
 	{
-		write(1, "Error\nNo exit!\n", 15);
+		write(2, "Error\nNo exit!\n", 15);
 		return (-1);
 	}
 	if (game->map.collectible < 1)
 	{
-		write(1, "Error\nNot enough collectibles!\n", 31);
+		write(2, "Error\nNot enough collectibles!\n", 31);
 		return (-1);
 	}
 	return (0);
@@ -56,17 +56,17 @@ int	ft_check_extention(const char *file)
 		i++;
 	while (file[i] != '.')
 		i--;
-	if (ft_strncmp(&file[i], ".ber", 5) != 0)
+	fd = open(file, __O_DIRECTORY);
+	if (fd >= 0)
 	{
-		write(1, "Error\nInvalid Extention.\n", 25);
-		return (-1);
+		close(fd);
+		return ((write(2, "Error\nYou tried to open a directory\n", 36), -1));
 	}
+	if (ft_strncmp(&file[i], ".ber", 5) != 0)
+		return (write(2, "Error\nInvalid Extention.\n", 25), -1);
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-	{
-		write(1, "Error\nThere's no map with that name.\n", 37);
-		return (-1);
-	}
+		return (write(2, "Error\nThere's no map with that name.\n", 37), -1);
 	close(fd);
 	return (0);
 }
@@ -90,14 +90,14 @@ int	ft_set_map_layout(t_data *game, char *file)
 	}
 	ft_set_stats(game, tmp);
 	if (ft_check_requirements(game) < 0)
+		return (close(fd), free(tmp), -1);
+	ft_get_map_width(game, tmp);
+	if (ft_write_map(game, tmp) == 1)
 	{
 		free(tmp);
-		return (-1);
+		exit(1);
 	}
-	ft_get_map_width(game, tmp);
-	ft_write_map(game, tmp);
-	free(tmp);
-	return (0);
+	return (close(fd), free(tmp), 0);
 }
 
 int	ft_init_positions(t_data *game, int i, int j)
@@ -113,7 +113,7 @@ int	ft_init_positions(t_data *game, int i, int j)
 			}
 			else if (ft_strchr("1PTEC0", game->map.map[i][j]) == NULL)
 			{
-				write(1, "Error\nInvalid input on map.\n", 28);
+				write(2, "Error\nInvalid input on map.\n", 28);
 				return (-1);
 			}
 			j++;

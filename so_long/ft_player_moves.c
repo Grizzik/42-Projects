@@ -6,7 +6,7 @@
 /*   By: npetitpi <npetitpi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:34:30 by npetitpi          #+#    #+#             */
-/*   Updated: 2023/01/11 12:50:30 by npetitpi         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:22:24 by npetitpi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	ft_move_up(t_data *game)
 			game->p_pos.y--;
 			ft_render(game);
 		}
-		/*else if (game->map.map[game->p_pos.y - 1][game->p_pos.x] == 'T')
-			ft_game_over(game);*/
 		else if (game->map.map[game->p_pos.y - 1][game->p_pos.x] == 'E')
 			ft_check_winner(game);
 	}
@@ -57,8 +55,6 @@ void	ft_move_down(t_data *game)
 			game->p_pos.y++;
 			ft_render(game);
 		}
-		/*else if (game->map.map[game->p_pos.y + 1][game->p_pos.x] == 'T')
-			ft_game_over(game);*/
 		else if (game->map.map[game->p_pos.y + 1][game->p_pos.x] == 'E')
 			ft_check_winner(game);
 	}
@@ -84,8 +80,6 @@ void	ft_move_right(t_data *game)
 			game->p_pos.x++;
 			ft_render(game);
 		}
-		/*else if (game->map.map[game->p_pos.y][game->p_pos.x + 1] == 'T')
-			ft_game_over(game);*/
 		else if (game->map.map[game->p_pos.y][game->p_pos.x + 1] == 'E')
 			ft_check_winner(game);
 	}
@@ -111,8 +105,6 @@ void	ft_move_left(t_data *game)
 			game->p_pos.x--;
 			ft_render(game);
 		}
-		/*else if (game->map.map[game->p_pos.y][game->p_pos.x - 1] == 'T')
-			ft_game_over(game);*/
 		else if (game->map.map[game->p_pos.y][game->p_pos.x - 1] == 'E')
 			ft_check_winner(game);
 	}

@@ -6,7 +6,7 @@
 /*   By: npetitpi <npetitpi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:34:53 by npetitpi          #+#    #+#             */
-/*   Updated: 2023/01/11 12:49:01 by npetitpi         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:27:55 by npetitpi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_check_winner(t_data *game)
 {
 	if (game->map.collectible == 0)
 	{
-		write(1, "Congratulations! You win!\n", 26);
+		write(1, "Congratulations! You won!\n", 26);
 		ft_clear_images(game);
 		ft_free_map(game);
 		mlx_destroy_window(game->mlx, game->win);
@@ -25,17 +25,6 @@ void	ft_check_winner(t_data *game)
 		exit(EXIT_SUCCESS);
 	}
 }
-
-/*void	ft_game_over(t_data *game)
-{
-	write(1, "Saiko got caught! You lose.\n", 28);
-	ft_clear_images(game);
-	ft_free_map(game);
-	mlx_destroy_window(game->mlx, game->win);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
-	exit(EXIT_FAILURE);
-}*/
 
 int	ft_key_press(int key, t_data *game)
 {

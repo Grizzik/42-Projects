@@ -6,7 +6,7 @@
 /*   By: npetitpi <npetitpi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:34:37 by npetitpi          #+#    #+#             */
-/*   Updated: 2023/01/12 11:58:56 by npetitpi         ###   ########.fr       */
+/*   Updated: 2023/01/26 19:15:56 by npetitpi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,13 @@ int	ft_init_traps(t_data *game)
 	game->t_pos.x = malloc((game->map.trap + 1) * sizeof(int));
 	game->t_pos.y = malloc((game->map.trap + 1) * sizeof(int));
 	if (!game->t_pos.x || !game->t_pos.y)
+	{
+		if (game->t_pos.x)
+			free(game->t_pos.x);
+		if (game->t_pos.y)
+			free(game->t_pos.y);
 		return (-1);
+	}
 	game->t_pos.x[game->map.trap] = 0;
 	game->t_pos.y[game->map.trap] = 0;
 	ft_set_traps(game);
@@ -62,14 +68,14 @@ int	ft_trap_anim(t_data *game)
 		{
 			mlx_destroy_image(game->mlx, game->img.trap);
 			game->img.trap = mlx_xpm_file_to_image(game->mlx, \
-			"./sprites/Trap_1.xpm", &pixel, &pixel);
+			"./Bonus/sprites_bonus/Trap_1.xpm", &pixel, &pixel);
 			ft_render(game);
 		}
 		else if (x == 20000)
 		{
 			mlx_destroy_image(game->mlx, game->img.trap);
 			game->img.trap = mlx_xpm_file_to_image(game->mlx, \
-				"./sprites/Trap_1.xpm", &pixel, &pixel);
+				"./Bonus/sprites_bonus/Trap_1.xpm", &pixel, &pixel);
 			ft_render(game);
 			x = 0;
 		}

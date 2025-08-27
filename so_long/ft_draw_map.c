@@ -6,7 +6,7 @@
 /*   By: npetitpi <npetitpi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 12:34:58 by npetitpi          #+#    #+#             */
-/*   Updated: 2023/01/12 11:12:51 by npetitpi         ###   ########.fr       */
+/*   Updated: 2023/01/27 14:46:26 by npetitpi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@ void	ft_draw_map(t_data *game, int x, int y)
 	if (game->map.map[y][x] == 'C')
 		mlx_put_image_to_window(game->mlx, game->win, \
 			game->img.collectible, x * PIXEL, y * PIXEL);
-	/*if (game->map.map[y][x] == 'T')
-		mlx_put_image_to_window(game->mlx, game->win, game->img.trap, \
-			x * PIXEL, y * PIXEL);*/
 	if (game->map.map[y][x] == 'E')
 		mlx_put_image_to_window(game->mlx, game->win, game->img.exit, \
 			x * PIXEL, y * PIXEL);
@@ -47,11 +44,11 @@ void	ft_open_exit(t_data *game, int pixel)
 		"./sprites/Exit.xpm", &pixel, &pixel);
 }
 
-int ft_render(t_data *game)
+int	ft_render(t_data *game)
 {
-	int y;
-	int x;
-	char *show;
+	int		y;
+	int		x;
+	char	*show;
 
 	y = 0;
 	x = 0;
@@ -68,9 +65,20 @@ int ft_render(t_data *game)
 		x = 0;
 		y++;
 	}
-
-	write(STDOUT_FILENO, (char*)show, ft_strlen(show));
+	write (STDOUT_FILENO, show, ft_strlen(show));
 	write (STDOUT_FILENO, "\n", 1);
 	free(show);
 	return (0);
+}
+
+size_t	ft_strlen2(const char *s)
+{
+	size_t	len;
+
+	len = 0;
+	if (!s)
+		return (0);
+	while (s[len] != '\n' && s[len])
+		len++;
+	return (len);
 }
