@@ -52,6 +52,10 @@ This repository gathers my first projects developed at 42
 
 - **[ft_irc](https://github.com/Grizzik/42-Projects/tree/main/ft_irc)** → An IRC server implementation in C++98. It handles multiple clients, channels, authentication, and basic IRC commands while respecting the official RFC specifications. Worked with IRSSI, with [Afontain](https://github.com/AurelienFontaine) & [Bsalort](https://github.com/Kwro91)
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+- **[ft_transcendence](https://github.com/Grizzik/42-Projects/tree/main/ft_transcendence)** → A full-stack web application built with modern technologies (Fastify, Node.js, SQlite, Tailwind CSS, Docker). The project consists of creating an online Pong game with user authentication, chat, friends system, matchmaking, and real-time gameplay. It emphasizes web development, security, and deployment practices.  
+
 
 ---
 Made with ❤️ at [42](https://42.fr)
