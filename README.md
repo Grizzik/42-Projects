@@ -39,7 +39,7 @@ This repository gathers my first projects developed at 42
     - **[CPP Module 03]** → Introduces inheritance, the concept of base/derived classes, and proper use of constructors/destructors.
 
     - **[CPP Module 04]** → Explores subtype polymorphism, abstract classes, interfaces, and deeper use of inheritance in C++.
-    
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------
     - **[CPP Module 05]** → Introduction to exceptions in C++, including error handling with try/catch blocks, custom exception classes, and understanding their role in robust programs.
 
     - **[CPP Module 06]** → Covers casting in C++ (static_cast, dynamic_cast, reinterpret_cast, const_cast), their use cases, and type conversion best practices.
@@ -50,6 +50,7 @@ This repository gathers my first projects developed at 42
 
     - **[CPP Module 09]** → Explores advanced use of containers and algorithms, implementing custom containers, and deepening understanding of time complexity and algorithmic efficiency.
 
+- **[ft_irc](https://github.com/Grizzik/42-Projects/tree/main/ft_irc)** → An IRC server implementation in C++98. It handles multiple clients, channels, authentication, and basic IRC commands while respecting the official RFC specifications. Worked with IRSSI, with [Afontain](https://github.com/AurelienFontaine) & [Bsalort](https://github.com/Kwro91)
 
 
 ---
