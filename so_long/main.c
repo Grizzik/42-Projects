@@ -1,0 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: npetitpi <npetitpi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 12:34:17 by npetitpi          #+#    #+#             */
+/*   Updated: 2023/01/11 12:42:59 by npetitpi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long.h"
+
+int	main(int argc, char **argv)
+{
+	t_data	game;
+
+	if (argc != 2)
+	{
+		write(1, "Error\nInvalid number of arguments.\n", 35);
+		return (0);
+	}
+	if (ft_check_error(&game, argv[1]) < 0)
+		return (0);
+	game.mlx = mlx_init();
+	if (game.mlx == NULL)
+	{
+		write(1, "Error\nMissing graphical interface.\n", 35);
+		ft_free_map(&game);
+		//ft_free_traps(&game);
+		return (0);
+	}
+	game.win = mlx_new_window(game.mlx, game.map.width * PIXEL, \
+		game.map.height * PIXEL, "Va chercher !");
+	ft_create_images(&game);
+	//mlx_loop_hook(game.mlx, &ft_trap_anim, &game);
+	mlx_expose_hook(game.win, &ft_render, &game);
+	mlx_key_hook(game.win, ft_key_press, &game);
+	mlx_hook(game.win, 17, 0, ft_press_x, &game);
+	mlx_loop(game.mlx);
+}
