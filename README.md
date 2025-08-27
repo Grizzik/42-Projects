@@ -1,6 +1,6 @@
 # 42-Projects
-This repository gathers my first projects developed at 42:
-[
+This repository gathers my first projects developed at 42
+
 - **[Libft](https://github.com/Grizzik/42-Projects/tree/main/Libft)** → A personal library reimplementing standard functions and adding new ones.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
