@@ -1,7 +1,7 @@
 # 42-Projects
 This repository gathers my first projects developed at 42:
 [
-- **[Libft](]([https://github.com/Grizzik/42-Projects/tree/main/Libft)./libft)** → A personal library reimplementing standard functions and adding new ones.
+- **[Libft]([./Libft](https://github.com/Grizzik/42-Projects/tree/main/Libft)./libft)** → A personal library reimplementing standard functions and adding new ones.
 
 - **[ft_printf]([./ft_printf](https://github.com/Grizzik/42-Projects/tree/main/ft_printf))** → A recreation of `printf`, handling multiple conversions and formatting options.
 
