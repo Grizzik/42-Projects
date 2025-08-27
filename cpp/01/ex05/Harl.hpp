@@ -1,0 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: npetitpi <npetitpi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/29 16:15:33 by npetitpi          #+#    #+#             */
+/*   Updated: 2024/03/04 13:27:23 by npetitpi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef HARL_HPP
+# define HARL_HPP
+
+# include <iostream>
+# include <string>
+
+
+class Harl
+{
+	private:
+		void	_info(void);
+		void	_debug(void);
+		void	_warning(void);
+		void	_error(void);
+
+	public:
+		Harl();
+		~Harl();
+		void	complain(std::string level);
+};
+
+
+#endif

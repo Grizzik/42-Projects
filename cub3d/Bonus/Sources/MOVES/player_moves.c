@@ -1,0 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player_moves.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lcadinot <lcadinot@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/12 11:50:53 by npetitpi          #+#    #+#             */
+/*   Updated: 2024/03/29 19:22:07 by lcadinot         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub.h"
+
+void	move_cam(t_data *game, double mouvmt)
+{
+	double	save_dir;
+	double	save_plan;
+
+	save_plan = game->ray.plan[X];
+	save_dir = game->ray.dir[X];
+	game->ray.dir[X] = game->ray.dir[X] * cos(mouvmt)
+		- game->ray.dir[Y] * sin(mouvmt);
+	game->ray.dir[Y] = save_dir * sin(mouvmt) + game->ray.dir[Y] * cos(mouvmt);
+	game->ray.plan[X] = game->ray.plan[X] * cos(mouvmt)
+		- game->ray.plan[Y] * sin(mouvmt);
+	game->ray.plan[Y] = save_plan * sin(mouvmt)
+		+ game->ray.plan[Y] * cos(mouvmt);
+}
+
+void	motion(t_data *move, char key)
+{
+	double	new_pos[2];
+
+	if (key == 'W')
+	{
+		new_pos[X] = ((new_pos[Y] = move->ray.pos[Y]
+					+ (move->speed * move->ray.dir[Y]),
+					move->ray.pos[X] + (move->speed * move->ray.dir[X])));
+		if (door_wall_too_close(move, new_pos, key))
+			return ;
+	}
+	else if (key == 'S')
+	{
+		new_pos[X] = ((new_pos[Y] = move->ray.pos[Y]
+					- (move->speed * move->ray.dir[Y]),
+					move->ray.pos[X] - (move->speed * move->ray.dir[X])));
+		if (door_wall_too_close(move, new_pos, key))
+			return ;
+	}
+	if (motion2(move, new_pos, key))
+		return ;
+	if (move->map.grid[(int)new_pos[Y]][(int)new_pos[X]] == '1'
+		|| move->map.grid[(int)new_pos[Y]][(int)new_pos[X]] == 'D')
+		return ;
+	update_pos(move, new_pos);
+	return ;
+}
+
+int	motion2(t_data *move, double new_pos[2], char key)
+{
+	if (key == 'A')
+	{
+		new_pos[X] = ((new_pos[Y] = move->ray.pos[Y]
+					- (move->speed * move->ray.dir[X]),
+					move->ray.pos[X] + (move->speed * move->ray.dir[Y])));
+		if (door_wall_too_close(move, new_pos, key))
+			return (1);
+	}
+	else if (key == 'D')
+	{
+		new_pos[X] = ((new_pos[Y] = move->ray.pos[Y]
+					+ (move->speed * move->ray.dir[X]),
+					move->ray.pos[X] - (move->speed * move->ray.dir[Y])));
+		if (door_wall_too_close(move, new_pos, key))
+			return (1);
+	}
+	return (0);
+}
+
+void	update_pos(t_data *game, double new_pos[2])
+{
+	game->player[POS_X] = new_pos[X];
+	game->player[POS_Y] = new_pos[Y];
+	game->ray.pos[X] = new_pos[X];
+	game->ray.pos[Y] = new_pos[Y];
+}
