@@ -54,7 +54,7 @@ This repository gathers my first projects developed at 42
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-- **[ft_transcendence](https://github.com/Grizzik/42-Projects/tree/main/ft_transcendence)** → A full-stack web application built with modern technologies (Fastify, Node.js, SQlite, Tailwind CSS, Docker). The project consists of creating an online Pong game with user authentication, chat, friends system, matchmaking, and real-time gameplay. It emphasizes web development, security, and deployment practices.  
+- **[ft_transcendence](https://github.com/Grizzik/42-Projects/tree/main/ft_transcendence)** → A full-stack web application built with modern technologies (Fastify, Node.js, SQlite, Tailwind CSS, Docker). The project consists of creating an online Pong game with user authentication, chat, friends system, matchmaking, and real-time gameplay. It emphasizes web development, security, and deployment practices. With [Mfeldman](https://github.com/AK7iwi), [Mfroissa](https://github.com/NineSama) & [Fllanet](https://github.com/ffouquet42) !
 
 
 ---
