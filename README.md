@@ -1,10 +1,11 @@
 # 42-Projects
-This repository gathers my first projects developed at 42.
+This repository gathers my first projects developed at 42:
+[
+- **[Libft](](https://github.com/Grizzik/42-Projects/tree/main/Libft)./libft)** → A personal library reimplementing standard functions and adding new ones.
 
-- **Libft** is a personal library that reimplements standard functions and adds new ones, serving as a foundation for later projects.
+- **[ft_printf]([./ft_printf](https://github.com/Grizzik/42-Projects/tree/main/ft_printf))** → A recreation of `printf`, handling multiple conversions and formatting options.
 
+- **[get_next_line]([./get_next_line](https://github.com/Grizzik/42-Projects/tree/main/gnl))** → An efficient function to read a file line by line, managing buffers and memory.  
 
-- **ft_printf** recreates the behavior of the printf function, supporting multiple conversions and formatting options.
-
-
-- **get_next_line** provides an efficient solution to read a file or input line by line, handling buffers and optimizing memory usage.
+---
+Made with ❤️ at [42](https://42.fr)
